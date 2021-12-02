@@ -21,25 +21,27 @@ public class Artist {
 
     public int addArtist(String first_name, String last_name, int age) throws SQLException {
 
-        String addArtist = "INSERT INTO Artist(first_name, last_name, age) VALUES(?,?,?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(addArtist, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setString(1, first_name);
-        preparedStatement.setString(2, last_name);
-        preparedStatement.setInt(3, age);
+            String addArtist = "INSERT INTO Artist(first_name, last_name, age) VALUES(?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(addArtist, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, first_name);
+            preparedStatement.setString(2, last_name);
+            preparedStatement.setInt(3, age);
 
-        ResultSet rs= null;
-        int artistId = 0;
+            ResultSet rs = null;
+            int artistId = 0;
 
-        int rowAffected = preparedStatement.executeUpdate();
-        if (rowAffected == 1) {
-            rs = preparedStatement.getGeneratedKeys();
-            if (rs.next())
-                artistId = rs.getInt(1);
+            int rowAffected = preparedStatement.executeUpdate();
+            if (rowAffected == 1) {
+                rs = preparedStatement.getGeneratedKeys();
+                if (rs.next())
+                    artistId = rs.getInt(1);
 
 
-        }
-        System.out.println("artist have been inserted");
-        return artistId;
+            }
+
+            System.out.println("artist have been inserted");
+            return artistId;
+
     }
 
         public int deleteArtistAfterID(int id) throws SQLException {
