@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Table extends Artist {
 
-
     public static void main(String[] args) throws SQLException {
 
         Artist artist = new Artist();
